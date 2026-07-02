@@ -6,6 +6,31 @@
 
 2026-07-02
 
+## 2026-07-02 GitHub 首次推送完成记录
+
+目标：
+
+- 将本地 Awakening 报告交付页 MVP 推送到 GitHub 仓库，为 Vercel 部署做准备。
+
+本轮实现：
+
+- 已添加远程仓库：`https://github.com/yongjiajie337-tech/Awakening-report-mvp.git`。
+- 已将本地分支从 `master` 重命名为 `main`。
+- 已运行 `npm.cmd run build`，构建通过。
+- 已完成首次提交：`3f16c63 Initial report delivery page MVP`。
+- 已将 `main` 分支推送到 GitHub，并设置本地 `main` 跟踪 `origin/main`。
+
+当前状态：
+
+- GitHub 仓库已经有项目代码。
+- 本地工作区在首次推送后是干净状态。
+- 下一步可以进入 Vercel 导入 GitHub 仓库并部署。
+
+下一步：
+
+- 指导用户在 Vercel 中选择 GitHub 仓库 `Awakening-report-mvp`。
+- Vercel 构建配置建议：Framework Preset 为 `Vite`，Build Command 为 `npm run build`，Output Directory 为 `dist`。
+
 ## 2026-07-02 Git 提交身份配置记录
 
 目标：
@@ -18,15 +43,14 @@
 - 已将 Git 全局提交邮箱从临时 QQ 邮箱改为 GitHub noreply 邮箱：`265225801+yongjiajie337-tech@users.noreply.github.com`。
 - 已验证 `git config --global --get user.name` 和 `git config --global --get user.email` 均返回正确结果。
 
-待确认：
+后续状态：
 
-- GitHub 网页端尚未创建当前项目对应的远程仓库。
-- 当前项目文件尚未进行首次提交。
+- GitHub 网页端已创建当前项目对应的远程仓库。
+- 当前项目已完成首次提交并推送到 GitHub。
 
 下一步：
 
-- 指导用户在 GitHub 网页端创建新仓库。
-- 然后进行本地首次提交、重命名默认分支为 `main`，并推送到 GitHub。
+- 进入 Vercel 导入 GitHub 仓库并部署。
 
 ## 2026-07-02 GitHub + Vercel 部署前置检查记录
 
