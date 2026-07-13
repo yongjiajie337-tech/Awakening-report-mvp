@@ -6,7 +6,7 @@
 
 2026-07-13
 
-## 2026-07-13 用户 B GitHub 推送与 Vercel 部署进行中
+## 2026-07-13 用户 B GitHub 推送与 Vercel 部署完成
 
 目标：
 - 将用户 B 报告以“同一 GitHub 仓库不同分支 + 独立 Vercel 项目”的方式上线，保持用户 A 的 `main` 和现有 Vercel 项目不变。
@@ -16,18 +16,22 @@
 - 已提交用户 B 页面和报告复用文档，提交为 `dba21c8 Add user B report delivery page`。
 - 已将 `codex/user-b-report` 推送到 `origin/codex/user-b-report` 并建立跟踪关系。
 - 未创建 PR，未合并回 `main`。
+- 已创建独立 Vercel 项目 `awakening-report-user-b`，并将 Production Branch 从 `main` 改为 `codex/user-b-report`。
+- 已推送提交 `3d6f804 Record user B Vercel production setup`，触发用户 B 的生产部署。
+- 已验证正式域名返回 HTTP `200 OK`，线上构建产物包含“用户 B”“城乡规划”和“城乡规划图面标准化工具包”等用户 B 特征文本。
 
 当前状态：
-- GitHub 分支已准备完成。
+- 用户 B GitHub 分支与 Vercel 生产部署均已完成。
 - 已在 Vercel 创建独立项目 `awakening-report-user-b`，项目域名为 `https://awakening-report-user-b.vercel.app`。
 - Vercel 首次创建项目时从 `main` 完成了引导部署；该部署只属于新项目，没有修改用户 A 的现有 Vercel 项目。
 - 用户已在 Vercel 的 Production 环境中将 Branch Tracking 从 `main` 改为 `codex/user-b-report` 并保存。
 - Vercel 构建设置已识别为 Vite，根目录为 `./`，无需环境变量。
+- `main` 与 `origin/main` 仍保持在 `16447b5`，用户 A 项目和分支未被修改。
 
 下一步行动：
-- 提交并推送本状态更新到 `codex/user-b-report`，触发用户 B 的生产部署。
-- 等待 Vercel 构建完成，验证 `https://awakening-report-user-b.vercel.app` 展示用户 B 报告而不是用户 A 报告。
-- 验证成功后记录最终部署结果，并保持 `main` 和用户 A 项目不变。
+- 将 `https://awakening-report-user-b.vercel.app` 作为用户 B 报告的正式交付网址。
+- 收集用户 B 的真实阅读反馈，再决定是否调整内容密度、CTA 或作品集路径表达。
+- 后续用户报告继续使用独立分支和独立 Vercel 项目，避免覆盖已经交付的报告。
 
 ## 2026-07-13 用户 B Web 报告交付页完成记录
 
