@@ -216,6 +216,13 @@ function Competitiveness() {
 }
 
 function AiUpgrade() {
+  const currentLevelTokens: string[] =
+    reportData.aiUpgrade.currentLevel.match(/Level \d/g) ?? [];
+  const approachingLevelTokens: string[] =
+    reportData.aiUpgrade.approachingLevel.match(/Level \d/g) ?? [];
+  const targetLevelTokens: string[] =
+    reportData.aiUpgrade.nextLevel.match(/Level \d/g) ?? [];
+
   return (
     <div className="upgrade-layout">
       <article className="upgrade-panel">
@@ -229,17 +236,22 @@ function AiUpgrade() {
       </article>
       <div className="level-list">
         {aiLevels.map((level) => {
-          const isCurrent = level.startsWith("Level 3") || level.startsWith("Level 4");
-          const isTarget = level.startsWith("Level 5");
+          const levelToken = level.match(/^Level \d/)?.[0];
+          const isCurrent = levelToken ? currentLevelTokens.includes(levelToken) : false;
+          const isApproaching = levelToken
+            ? approachingLevelTokens.includes(levelToken)
+            : false;
+          const isTarget = levelToken ? targetLevelTokens.includes(levelToken) : false;
           return (
             <div
               className={`level-row ${isCurrent ? "is-current" : ""} ${
-                isTarget ? "is-target" : ""
-              }`}
+                isApproaching ? "is-approaching" : ""
+              } ${isTarget ? "is-target" : ""}`}
               key={level}
             >
               <span>{level}</span>
               {isCurrent ? <Badge>当前</Badge> : null}
+              {isApproaching ? <Badge>接近</Badge> : null}
               {isTarget ? <Badge>目标</Badge> : null}
             </div>
           );
@@ -252,6 +264,26 @@ function AiUpgrade() {
             <li key={scenario}>{scenario}</li>
           ))}
         </ul>
+      </article>
+      <article className="software-boundary-panel">
+        <div>
+          <p className="card-kicker">现实边界</p>
+          <h3>AI 操作 CAD / PS：能辅助，但不能甩手</h3>
+          <p>{reportData.aiUpgrade.softwareBoundary.summary}</p>
+          <ul className="clean-list">
+            {reportData.aiUpgrade.softwareBoundary.items.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <p className="card-kicker">推荐升级顺序</p>
+          <ol className="boundary-steps">
+            {reportData.aiUpgrade.softwareBoundary.recommendedOrder.map((step) => (
+              <li key={step}>{step}</li>
+            ))}
+          </ol>
+        </div>
       </article>
     </div>
   );
